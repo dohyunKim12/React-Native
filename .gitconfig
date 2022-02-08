@@ -1,0 +1,29 @@
+[user]
+		name = dohyunkim
+			email = kdh951102@gmail.com
+
+[diff]
+		tool = default-difftool
+[difftool "default-difftool"]
+	    cmd = code --wait --diff $LOCAL $REMOTE
+[alias]
+	    d = difftool
+
+[push]
+	    default = current
+[pull]
+	    rebase = true
+[alias]
+	    st = status
+	        lg = log --graph --all --pretty=format:'%C(yellow)(%ad)%C(reset) %C(green)(%h)%C(reset) | %C(white)%s %C(bold red){{%an}}%C(reset) %C(blue)%d%C(reset)' --date=short
+
+[merge]
+	    keepBackup = false;
+	        tool = p4merge
+[mergetool]
+	    prompt = false
+[mergetool "p4merge"]
+	    cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+	        keepTemporaries = false
+		    trustExitCode = false
+		        keepBackup = false
