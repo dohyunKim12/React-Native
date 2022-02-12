@@ -2,11 +2,7 @@ import React from 'react';
 import {View, Text} from 'react-native';
 
 const PropsChild = props => {
-  return (
-    <View>
-      <Text onPress={props.cState}>{props.sText}</Text>
-    </View>
-  );
+  return <Text onPress={props.cState}>{props.sText}</Text>;
 };
 
 export default PropsChild;

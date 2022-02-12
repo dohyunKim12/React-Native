@@ -10,7 +10,16 @@ class App extends Component {
     sampleNum: 1,
   };
 
+  // inputText() {
+  //   this.state.sampleBoolean ? (
+  //     <Text>sampleBool is True</Text>
+  //   ) : (
+  //     <Text>SampleBool is False</Text>
+  //   );
+  // }   // doesn't work.
+
   inputText = () =>
+    // console.log('fuck');
     this.state.sampleBoolean ? (
       <Text>sampleBool is True</Text>
     ) : (
@@ -43,6 +52,7 @@ class App extends Component {
           sText={this.state.sampleText}
           cState={this.changeState}
         />
+        {this.inputText()}
       </View>
     );
   }
