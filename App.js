@@ -1,69 +1,64 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow strict-local
+ */
+
+import {green, yellow} from 'color-name';
 import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import PropsChild from './Props';
 
 class App extends Component {
-  state = {
-    sampleText: 'Hello World', //Hello World를 직접 출력하는 것이 아니라,
-    // state를 활용하여 변수처럼 사용. (data의 재사용성 등 효율적인 선택.)
-    sampleBoolean: false,
-    sampleNum: 1,
-  };
-
-  // inputText() {
-  //   this.state.sampleBoolean ? (
-  //     <Text>sampleBool is True</Text>
-  //   ) : (
-  //     <Text>SampleBool is False</Text>
-  //   );
-  // }   // doesn't work.
-
-  inputText = () =>
-    // console.log('fuck');
-    this.state.sampleBoolean ? (
-      <Text>sampleBool is True</Text>
-    ) : (
-      <Text>SampleBool is False</Text>
-    );
-
-  changeState = () =>
-    this.state.sampleBoolean
-      ? this.setState({
-          sampleText: 'fuck',
-          sampleBoolean: false,
-        })
-      : this.setState({
-          sampleText: 'What the fork?',
-          sampleBoolean: true,
-        });
-
-  onAdd = () => {
-    this.setState(prevState => {
-      return {
-        sampleNum: prevState.sampleNum + 1,
-      };
-    });
-  };
-
   render() {
     return (
-      <View style={styles.background}>
-        <PropsChild // 부모가 가진 data (sampleText, changeState)를 자식에게 간편히 전달하기 위해 props를 사용.
-          sText={this.state.sampleText}
-          cState={this.changeState}
-        />
-        {this.inputText()}
+      <View style={styles.mainView}>
+        {/* 첫번째 중괄호는 jsx를, 두번째 중괄호는 객체를 담음. */}
+        <View style={styles.subView}>
+          {/* View는 다른 component들을 감싸주는 역할. */}
+          <Text style={styles.mainText}>Hello World!</Text>
+        </View>
+        <View style={styles.subView}>
+          <Text>Hello World!</Text>
+        </View>
+        <View style={styles.anotherSubView}>
+          <Text style={styles.mainText}>Hello World!</Text>
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  background: {
+  mainView: {
+    backgroundColor: 'green',
+    padingTop: 50, //padingTOp과 marginTop은 View 내부냐 외부냐의 차이.
+    // 모든 component는 전부 정수만 받음.
+    // height: '100%',
+    flex: 1, //weight같은 속성.
+    alignItems: 'center', //수평정렬
+    justifyContent: 'center', //수직정렬
+  },
+  subView: {
+    backgroundColor: 'yellow',
+    marginBottom: 20,
     flex: 1,
-    backgroundColor: '#fff',
+    width: '40%',
+  },
+  anotherSubView: {
+    flex: 2,
+    backgroundColor: 'yellow',
+    marginBottom: 20,
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  mainText: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: 'red',
+    padding: 30,
   },
 });
 
