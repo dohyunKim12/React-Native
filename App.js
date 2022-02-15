@@ -9,22 +9,22 @@
 import {green, yellow} from 'color-name';
 import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import Header from './src/header';
 
 class App extends Component {
+  state = {
+    appName: 'My First App',
+  };
+
   render() {
     return (
       <View style={styles.mainView}>
-        {/* 첫번째 중괄호는 jsx를, 두번째 중괄호는 객체를 담음. */}
-        <View style={styles.subView}>
-          {/* View는 다른 component들을 감싸주는 역할. */}
-          <Text style={styles.mainText}>Hello World!</Text>
-        </View>
-        <View style={styles.subView}>
-          <Text>Hello World!</Text>
-        </View>
-        <View style={styles.anotherSubView}>
-          <Text style={styles.mainText}>Hello World!</Text>
-        </View>
+        {/* <Header name={this.state.appName} /> */}
+        <Text
+          style={styles.mainText}
+          onPress={() => alert('text touch event!')}>
+          Blah Blah
+        </Text>
       </View>
     );
   }
@@ -32,7 +32,7 @@ class App extends Component {
 
 const styles = StyleSheet.create({
   mainView: {
-    backgroundColor: 'green',
+    backgroundColor: 'white',
     padingTop: 50, //padingTOp과 marginTop은 View 내부냐 외부냐의 차이.
     // 모든 component는 전부 정수만 받음.
     // height: '100%',
@@ -43,8 +43,6 @@ const styles = StyleSheet.create({
   subView: {
     backgroundColor: 'yellow',
     marginBottom: 20,
-    flex: 1,
-    width: '40%',
   },
   anotherSubView: {
     flex: 2,
@@ -55,8 +53,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   mainText: {
-    fontSize: 30,
-    fontWeight: 'bold',
+    fontSize: 20,
+    fontWeight: 'normal',
     color: 'red',
     padding: 30,
   },
