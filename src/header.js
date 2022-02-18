@@ -26,12 +26,15 @@ import {
 const Header = props => (
   <TouchableOpacity
     style={styles.header}
-    onPress={() => alert('shortPress!')}
-    onLongPress={() => alert('hello!')}
-    onPressIn={() => alert('act immediately')}
-    onPressOut={() => alert('hand off!')}>
+    // onPress={() => alert('shortPress!')}
+    // onLongPress={() => alert('hello!')}
+    // onPressIn={() => alert('act immediately')}
+    // onPressOut={() => alert('hand off!')}
+    onPress={function () {
+      return alert('Welcome!');
+    }}>
     <View>
-      <Text>{props.name}! This is Header</Text>
+      <Text style={styles.header_text}>{props.name}! This is Header</Text>
     </View>
   </TouchableOpacity>
 ); // Header라는 함수는 View라는 jsx 컴포넌트를 return하기 때문에 소괄호를 사용하였음.
@@ -59,8 +62,12 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: 'pink',
     alignItems: 'center',
-    padding: 5,
+    padding: 10,
     width: '100%',
+  },
+  header_text: {
+    fontWeight: 'bold',
+    fontSize: 20,
   },
 });
 
