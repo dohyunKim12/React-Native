@@ -8,7 +8,7 @@
 
 import {green, yellow} from 'color-name';
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import Header from './src/header';
 import Generator from './src/generator';
 import NumList from './src/numlist';
@@ -61,7 +61,16 @@ class App extends Component {
           </Text>
         </View>
         <Generator add={this.onAddRandomNum} />
-        <NumList num={this.state.random} delete={this.onNumDelete} />
+
+        <ScrollView
+          style={{width: '100%'}}
+          contentContainerStyle={{alignItems: 'center'}}
+          // onMomentumScrollEnd={() => alert('end')}
+          // onContentSizeChange={(width, height) => alert(height)}
+          bounces={true} // only for IOS, not Android
+        >
+          <NumList num={this.state.random} delete={this.onNumDelete} />
+        </ScrollView>
         {/* Generator에서 number를 생성시키고, numList는 랜덤 number들을 View에 */}
         {/* 띄운다. (터치하면 삭제되는 기능까지 구현.) */}
       </View>
