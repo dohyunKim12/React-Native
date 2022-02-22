@@ -8,73 +8,21 @@
 
 import {green, yellow} from 'color-name';
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, Button} from 'react-native';
 import Header from './src/header';
 import Generator from './src/generator';
 import NumList from './src/numlist';
 import Input from './src/input';
 
 class App extends Component {
-  state = {
-    appName: 'Killer App',
-    random: [36, 999],
+  onAddTextInput = () => {
+    alert('I want to add a TextInput');
   };
-
-  onAddRandomNum = () => {
-    const randNum = Math.floor(Math.random() * 100);
-    //0~1 사이의 임의 소수 발생시키고 * 100 후 소수점 버림.
-    this.setState(prevState => {
-      return {
-        random: [...prevState.random, randNum],
-      };
-    });
-  };
-
-  onNumDelete = position => {
-    const newArray = this.state.random.filter(
-      // filter라는 배열의 내장함수는 function의 반환값을 가지고 해당 조건을 만족할 때에만
-      // 새로운 배열을 만들어서 반환함.
-      function (num, index) {
-        return position != index;
-      },
-      // 삭제하려는 인덱스(position)과 원래 배열의 index들을 비교해서,
-      // position과 같지 않은 index들 (position을 제외한 나머지 인덱스들) 만을 가지고
-      // 새로운 배열을 만들겠다 라는 뜻.
-    );
-    const newArray2 = this.state.random;
-    newArray2[position] = '🤡';
-
-    this.setState({
-      // random: newArray,
-      random: newArray2,
-    });
-  };
-
   render() {
     return (
       <View style={styles.mainView}>
-        {/* <Header name={this.state.appName} />
-        <View>
-          <Text
-            style={styles.mainText}
-            onPress={() => alert('text touch event!')}>
-            Connect;in
-          </Text>
-        </View>
-        <Generator add={this.onAddRandomNum} />
-
-        <ScrollView
-          style={{width: '100%'}}
-          contentContainerStyle={{alignItems: 'center'}}
-          // onMomentumScrollEnd={() => alert('end')}
-          // onContentSizeChange={(width, height) => alert(height)}
-          bounces={true} // only for IOS, not Android
-        >
-          <NumList num={this.state.random} delete={this.onNumDelete} />
-        </ScrollView> */}
-        {/* Generator에서 number를 생성시키고, numList는 랜덤 number들을 View에 */}
-        {/* 띄운다. (터치하면 삭제되는 기능까지 구현.) */}
         <Input />
+        <Button title="Add Text Input" onPress={this.onAddTextInput}></Button>
       </View>
     );
   }
